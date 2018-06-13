@@ -1,0 +1,81 @@
+<html lang = "en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Maintenance Department Request Tracker</title>
+		<link rel="stylesheet" href="user_homepage.css">
+		<script src="logout.js"></script>
+	</head>
+	<body>
+	<div id = "big_wrapper">
+		<header id = "top_header">
+			<h1>MAINTENANCE TRACKER</h1>
+		</header>
+		<nav id="top_menu">
+			<ul>
+				<li><a href="about.html">About</a></li>
+				<li><a href="user_homepage.html">Home</a></li>
+				<li><a href="user_contact.html">Contact</a></li>
+				<li><a href="profile.html" onclick="logout();">Log out</a></li>
+			</ul>
+		</nav>
+		<div id = "new_div">
+			<aside id = "left_side">
+				<ul style="list-style-type: none">
+				<h4><li><a href ="admin_homepage.html"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"><i class="fas fa-bars" id='box1'></i></a></li></h4>
+				<br>
+				<h2><li><a href ="admin_profile.html">Profile</a></li></h2>
+				<br>
+				<h2><li><a href="make_req.html">Make request</a></li></h2>
+				<br>
+				<h2><li><a href="view_req.html">View request</a></li></h2>
+				<br>
+				<h2><li><a href="feedback.html">Feedback</a></li></h2>
+				<br>
+				<h2><li><a href="javascript:location.reload(true)">Refresh Page</a></li></h2>
+				</ul>
+			</aside>
+			<section id = "main_section">
+				<form>
+					<input type="text" placeholder="Type here..." maxlength="50" id="search_bar">
+					<input type="submit" value="Search" id="submit">
+				</form><br>
+				<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"><i class="fas fa-user"></i>
+				<div class="profile-page">
+					<div class="form">
+					<form class="login-form">
+						<table>
+							<tr>
+								<td>Name:</td>
+								<td><input type="text" placeholder="Janet"></td>
+							</tr>
+							<tr>
+								<td>Email:</td>
+								<td><input type="mail" placeholder="janetnim401@gmail.com"></td>
+							</tr>
+							<tr>
+								<td>Gender:</td>
+								<td><input type="radio" name="gender">Male
+									<input type="radio" name="gender">Female</td>
+							</tr>
+							<tr>
+								<td>Department:</td>
+								<td><input type="text" placeholder="Human Resource"></td>
+							</tr>
+							<tr>
+								<td>Phone::</td>
+								<td><input type="phone" placeholder="0712345678"></td>
+							</tr>
+						</table><br>
+						<a href="edit_profile.html" class="button" id="cancel_button">Edit</a>
+						<a href="admin_profile.html" class="button" id="cancel_button">Save changes</a>
+					</form>
+				</div>
+			</div>
+		</section>
+		</div>
+		<footer id = "the_footer">
+			@copyright2018
+		</footer>
+	</div>
+	</body>
+</html>

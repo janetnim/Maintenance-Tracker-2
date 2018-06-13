@@ -1,0 +1,56 @@
+<html lang = "en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Admin View Requests</title>
+		<link rel="stylesheet" href="user_homepage.css">
+		<script src="logout.js"></script>
+	</head>
+	<body>
+	<div id = "big_wrapper">
+		<header id = "top_header">
+			<h1>MAINTENANCE TRACKER</h1>
+		</header>
+		<nav id="top_menu">
+			<ul>
+				<li><a href="about.html">About</a></li>
+				<li><a href="admin_homepage.html">Home</a></li>
+				<li><a href="user_contact.html">Contact</a></li>
+				<li><a href="admin_resolve.html" onclick="logout();">Log out</a></li>
+			</ul>
+		</nav>
+		<div id = "new_div">
+			<aside id = "left_side">
+				<ul style="list-style-type: none">
+				<h4><li><a href ="admin_homepage.html"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"><i class="fas fa-bars" id='box1'></i></a></li></h4>
+				<br>
+				<h2><li><a href ="admin_profile.html">Profile</a></li></h2>
+				<br>
+				<h2><li><a href="admin_requests.html">Received requests</a></li></h2>
+				<br>
+				<h2><li><a href="admin_view.html">View requests</a></li></h2>
+				<br>
+				<h2><li><a href="admin_resolve.html">Resolve requests</a></li></h2>
+				<br>
+				<h2><li><a href="javascript:location.reload(true)">Refresh Page</a></li></h2>
+				</ul>
+			</aside>
+			<section id = "main_section">
+				<form>
+					<input type="text" placeholder="Type here..." maxlength="50" id="search_bar">
+					<input type="submit" value="Search" id="submit">
+				</form>
+				<br><h4>Status Report</h4><br>
+					<h2><pre class="tab"><input type="checkbox"> RequestId: B001	Request: Desk repair		Date: 01/06/2018  <input type="radio" name="status1">Complete <input type="radio" name="status1">Incomplete<br><input type="checkbox"> RequestId: A019	Request: Bult replacement	Date: 01/06/2018  <input type="radio" name="status2">Complete <input type="radio" name="status2">Incomplete<br><input type="checkbox"> RequestId: A020	Request: SystemUnit maintenance Date: 12/08/2018  <input type="radio" name="status3">Complete <input type="radio" name="status3">Incomplete<br><input type="checkbox"> RequestId: D002	Request: Telephone repair	Date: 02/09/2018  <input type="radio" name="status4">Complete <input type="radio" name="status4">Incomplete<br><input type="checkbox"> RequestId: F015	Request: Tractor maintenance	Date: 17/09/2018  <input type="radio" name="status5">Complete <input type="radio" name="status5">Incomplete<br><input type="checkbox"> RequestId: F015	Request: Tractor maintenance	Date: 17/09/2018  <input type="radio" name="status6">Complete <input type="radio" name="status6">Incomplete<br>
+				</pre></h2>
+				<div id="req_button">
+				<a href="admin_resolve.html" class="button">Save</a>
+				<a href="admin_resolve.html" class="button">Edit</a>
+				</div>
+			</section>
+		</div>
+		<footer id = "the_footer">
+			@copyright2018
+		</footer>
+	</div>
+	</body>
+</html>
