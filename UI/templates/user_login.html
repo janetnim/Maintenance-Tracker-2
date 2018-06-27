@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>login page</title>
 	<link rel="stylesheet" href="user.css">
+	<script src="login.js"></script>
 </head>
 <body background="blue_background.jpg">
 	<div class="Company-info">
@@ -11,10 +13,11 @@
 	</div>
 	<div class="login-page">
 		<div class="form">
-			<form class="login-form">
-			<input type="text" placeholder="Enter your email/username"/>
-			<input type="password" placeholder="Enter your password"/>
-			<button class="button" onclick="window.location.href='user_homepage.html'" type="button" value="Log In">Log in</button>
+			<form class="login-form" method="post" enctype="multipart/formdata" onsubmit="return login(this);">
+			<p id="err-message"></p>
+			<input type="text" name="username" placeholder="Enter your username"/>
+			<input type="password" name="password" placeholder="Enter your password"/>
+			<button class="button" type="submit" value="Log in">Log in</button>
 			<p class="message">Or log in as admin? <a href="admin_homepage.html">login</a></p>
 			<p class="message">Not registered yet? <a href="user_signup.html">SignUp</a></p>
 			</form>
