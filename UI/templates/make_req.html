@@ -1,8 +1,10 @@
+<!DOCTYPE html>
 <html lang = "en">
 	<head>
 		<meta charset="utf-8"  />
 		<title>Maintenance Department Request Tracker</title>
 		<link rel="stylesheet" href="user_homepage.css">
+		<script src="login.js"></script>
 		<script src="logout.js"></script>
 	</head>
 	<body>
@@ -23,8 +25,6 @@
 				<ul style="list-style-type: none">
 				<h4><li><a href ="admin_homepage.html"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"><i class="fas fa-bars" id='box1'></i></a></li></h4>
 				<br>
-				<h2><li><a href ="profile.html">Profile</a></li></h2>
-				<br>
 				<h2><li><a href="make_req.html">Make request</a></li></h2>
 				<br>
 				<h2><li><a href="view_req.html">View request</a></li></h2>
@@ -36,22 +36,23 @@
 			</aside>
 			<section id = "main_section">
 				<form>
-					<input type="text" placeholder="Type here..." maxlength="50" id="search_bar">
+					<input type="text" placeholder="Type Request Id here..." maxlength="50" id="search_bar">
 					<input type="submit" value="Search" id="submit">
 				</form>
 				<br>
 				<h4>Create a Repair/Maintenance Request</h4><br>
-				<h2><pre class="tab">Title:       <textarea maxlength="60" rows="2" cols="50"></textarea><br><br>Department:  <textarea maxlength="60" rows="2" cols="50"></textarea><br><br>Description: <textarea maxlength="250" rows="7" cols="50"></textarea><br><br></pre></h2>
-				<br>
-				<h2>
-   				<input type="radio" name="status">Very Urgent 
-   	   			<input type="radio" name="status">Urgent 
-   				<input type="radio" name="status">Not Urgent 
-   				</h2>
-						<div id="make_buttons">
-						<a href="view_req.html" class="button" id="edit_button">Add</a>
-						<a href="make_req.html" class="button" id="cancel_button">Cancel</a>
-						</div>
+				<div class="form">
+					<form class="make_req-form" class="make_req-form" method="post" enctype="multipart/formdata" onsubmit="return makereq(this);">
+					<p id="err-message"></p>
+					<br>
+					<label>Request</label>
+					<input type="text" name="request" placeholder="Enter your request"/>
+					<label>Department</label>
+					<input type="text" name="department" placeholder="Enter your department"/>
+					<button class="button" type="submit" value="Submit">Submit</button>
+					<a href="make_req.html" class="button" id="cancel_button">Cancel</a>
+					</form>
+				</div>
 			</section>
 		</div>
 		<footer id = "the_footer">
