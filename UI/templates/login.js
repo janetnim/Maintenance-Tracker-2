@@ -334,7 +334,7 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests/approve", {
 		"<td>"+request.request_id+"</td><td>"+ request.request+
 		"</td><td>"+request.department+"</td><td>"+request.status+
 		"</td><td>"+request.personal_id+
-		"</td></tr>";
+		"</td><td><button onclick='resolve("+request.request_id+")'>Resolve</button></td></tr>";
 	}
 
 	document.getElementById("admin_approve").getElementsByTagName("tbody")[0].innerHTML = content;
@@ -358,11 +358,12 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests/disapprove", 
 		"<td>"+request.request_id+"</td><td>"+ request.request+
 		"</td><td>"+request.department+"</td><td>"+request.status+
 		"</td><td>"+request.personal_id+
-		"</td></tr>";
+		"</td><td><button onclick='approve("+request.request_id+")'>Approve</button></td></tr>";
 	}
 
 	document.getElementById("admin_reject").getElementsByTagName("tbody")[0].innerHTML = content;
 })
+
 // admin can view filtered resolved requests
 fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests/resolve", {
 	method: "GET",
@@ -409,7 +410,7 @@ function approve(request_id){
 	});
 }
 
-// admin can disapprove a request
+// admin disapprove a request
 function disapprove(request_id){
 	fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests/"+request_id+"/disapprove", {
 		method: "PUT",
@@ -428,6 +429,28 @@ function disapprove(request_id){
 
 		row.innerHTML = content;
 		window.location.href = "admin_requests.html"
+	});
+}
+
+// admin resolve request
+function resolve(request_id){
+	fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests/"+request_id+"/resolve", {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer " + getItems().token
+		}
+	}).then(response => response.json())
+	.then(data => {
+		let request = data.Request;
+		let row = document.getElementById("request_"+request_id);
+
+		let content = "<td>"+request.request_id+"</td><td>"+ request.description+
+		"</td><td>"+request.product_name+"</td><td>"+request.status+
+		"</td><td><button onclick='resolve("+request.request_id+")''>Resolve</button></td>";
+
+		row.innerHTML = content;
+		window.location.href = "admin_approve.html"
 	});
 }
 
