@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sign up age</title>
+	<meta charset="utf-8">
+	<title>Signup Page</title>
 	<link rel="stylesheet" href="user.css">
+	<script src="login.js"></script>
 </head>
 <body background="blue_background.jpg">
 <div class="Company-info">
@@ -11,18 +13,16 @@
 </div>
 	<div class="login-page">
 		<div class="form">
-			<form class="register-form">
-			<input type="text" placeholder="Enter your email"/>
-			<input type="text" placeholder="Enter username"/>
-			<input type="password" placeholder="Enter password"/>
-			<input type="password" placeholder="Confirm password"/>
-			<button class="button" onclick="window.location.href='user_homepage.html'" type="button" value="Sign Up">Sign up</button>
-			<p class="message">Already have an account?<a href="user_login.html">Login</a></p>
-		</form>
+			<form class="register-form" method="post" enctype="multipart/formdata" onsubmit="return signup(this);">
+				<p id="err-message"></p>
+				<input id="email" name="email" type="text" placeholder="Enter your email"/>
+				<input id="username" name="username" type="text" placeholder="Enter username"/>
+				<input id="password" name="password" type="password" placeholder="Enter password"/>
+				<button class="button" type="submit" value="Sign Up">Sign up</button>
+				<p class="message">Already have an account?<a href="user_login.html">Login</a></p>
+			</form>
 		</div>
 	</div>
 </body>
 </html>
-
-
 
