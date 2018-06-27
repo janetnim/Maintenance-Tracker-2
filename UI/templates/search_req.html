@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset="utf-8"  />
+		<title>Maintenance Department Request Tracker</title>
+		<link rel="stylesheet" href="user_homepage.css">
+		<script src="logout.js"></script>
+		<script type="text/javascript" src="login.js"></script>
+	</head>
+	<body>
+	<div id = "big_wrapper">
+		<header id = "top_header">
+			<h1>MAINTENANCE TRACKER</h1>
+		</header>
+		<nav id = "top_menu">
+			<ul>
+				<li><a href="about.html">About</a></li>
+				<li><a href="user_homepage.html">Home</a></li>
+				<li><a href="user_contact.html">Contact</a></li>
+				<li><a href="view_req.html" onclick="logout();">Log out</a></li>
+			</ul>
+		</nav>
+		<div id = "new_div">
+			<aside id = "left_side">
+				<ul style="list-style-type: none">
+				<h4><li><a href ="admin_homepage.html"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"><i class="fas fa-bars" id='box1'></i></a></li></h4>				
+				<br>
+				<h2><li><a href="make_req.html">Make request</a></li></h2>
+				<br>
+				<h2><li><a href="view_req.html">View request</a></li></h2>
+				<br>
+				<h2><li><a href="feedback.html">Feedback</a></li></h2>
+				<br>
+				<h2><li><a href="javascript:location.reload(true)">Refresh Page</a></li></h2>
+				</ul>
+			</aside>
+			<section id = "main_section">
+				<form class="search_req-form" class="search_req-form" method="post" enctype="multipart/formdata" onsubmit="return searchreq(this);">					
+					<input type="integer" placeholder="Type Request_id here..." maxlength="50" id="search_bar">
+					<input type="submit" value="Search" id="submit">
+				</form>
+				<p id="err-message"></p>
+				<div id="search_req">
+					<table border="1px solid black">
+						<thead>
+							<th>Request_id</th>
+							<th>Request</th>
+							<th>Department</th>
+							<th>Status</th>
+							<th>Personal_id</th>
+							<th>Modify</th>
+							<th>Delete</th>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+				</div>
+
+			</section>
+		</div>
+		<footer id = "the_footer">
+			@copyright2018
+		</footer>
+	</div>
+	</body>
+</html>
