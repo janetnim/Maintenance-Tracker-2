@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Maintenance Department Request Tracker</title>
+		<link rel="stylesheet" href="user_homepage.css">
+		<script src="logout.js"></script>
+		<script src="login.js"></script>
+	</head>
+	<body>
+	<div id = "big_wrapper">
+		<header id = "top_header">
+			<h1>MAINTENANCE TRACKER</h1>
+		</header>
+		<nav id="top_menu">
+			<ul>
+				<li><a href="about.html">About</a></li>
+				<li><a href="admin_homepage.html">Home</a></li>
+				<li><a href="admin_contact.html">Contact</a></li>
+				<li><a href="admin_reject.html" onclick="logout();">Log out</a></li>
+			</ul>
+		</nav>
+		<div id = "new_div">
+			<aside id = "left_side">
+				<ul style="list-style-type: none">
+				<h4><li><a href ="admin_homepage.html"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"><i class="fas fa-bars" id='box1'></i></a></li></h4>
+				<br>
+				<h2><li><a href ="admin_profile.html">View Users</a></li></h2>
+				<br>
+				<h2><li><a href="admin_requests.html">Received requests</a></li></h2>
+				<br>
+				<h2><li><a href="admin_view.html">View requests</a></li></h2>
+				<br>
+				<h2><li><a href="javascript:location.reload(true)">Refresh Page</a></li></h2>
+				</ul>
+			</aside>
+			<section id = "main_section">
+				<form>
+					<input type="text" placeholder="Type here..." maxlength="50" id="search_bar">
+					<input type="submit" value="Search" id="submit">
+				</form>
+				<br>
+				<h1>Approved Requests</h1><br>
+				<div id="admin_approve">
+					<table border="1px solid black">
+						<thead>
+							<th>Request_id</th>
+							<th>Request</th>
+							<th>Department</th>
+							<th>Status</th>
+							<th>Personal_id</th>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+				</div>
+			</section>
+		</div>
+		<footer id = "the_footer">
+			@copyright2018
+		</footer>
+	</div>
+	</body>
+</html>
