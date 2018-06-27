@@ -1,6 +1,6 @@
 *{
 	margin: 0px;
-	padding: 0px
+	padding: 0px;
 }
 h1{
 	font: bold 25px Arial;
@@ -16,6 +16,7 @@ header, section, footer, aside, hgroup, nav, article{
 }
 body{
 	width: 100%;
+	height: 100%;
 	display: -webkit-box;
 	-webkit-box-pack: left;
 }
@@ -25,8 +26,15 @@ body{
 abt_btn.h2{
 	padding: 5px;
 }
+#requests{
+	width: 100%;
+}
 #text{
 	float: right;
+}
+#err-message{
+	display: none;
+	color: red;
 }
 #big_wrapper{
 	max-width: 100%;
