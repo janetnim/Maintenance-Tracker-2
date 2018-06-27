@@ -1,9 +1,11 @@
+<!DOCTYPE html>
 <html lang = "en">
 	<head>
 		<meta charset="utf-8"/>
 		<title>Admin View Reuests</title>
 		<link rel="stylesheet" href="user_homepage.css">
 		<script src="logout.js"></script>
+		<script src="login.js"></script>
 	</head>
 	<body>
 	<div id = "big_wrapper">
@@ -14,7 +16,7 @@
 			<ul>
 				<li><a href="about.html">About</a></li>
 				<li><a href="admin_homepage.html">Home</a></li>
-				<li><a href="user_contact.html">Contact</a></li>
+				<li><a href="admin_contact.html">Contact</a></li>
 				<li><a href="admin_view.html" onclick="logout();">Log out</a></li>
 			</ul>
 		</nav>
@@ -23,13 +25,11 @@
 				<ul style="list-style-type: none">
 				<h4><li><a href ="admin_homepage.html"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"><i class="fas fa-bars" id='box1'></i></a></li></h4>
 				<br>
-				<h2><li><a href ="admin_profile.html">Profile</a></li></h2>
+				<h2><li><a href ="admin_profile.html">View Users</a></li></h2>
 				<br>
 				<h2><li><a href="admin_requests.html">Received requests</a></li></h2>
 				<br>
 				<h2><li><a href="admin_view.html">View requests</a></li></h2>
-				<br>
-				<h2><li><a href="admin_resolve.html">Resolve requests</a></li></h2>
 				<br>
 				<h2><li><a href="javascript:location.reload(true)">Refresh Page</a></li></h2>
 				</ul>
@@ -40,14 +40,23 @@
 					<input type="submit" value="Search" id="submit">
 				</form>
 				<br>
-				<a href="admin_view.html" class="button">Approved Requests</a>
-				<a href="admin_reject.html" class="button">Rejected Requests</a>
+				<a href="admin_approve.html" class="button">Approved Requests</a>
+				<a href="admin_reject.html" class="button">Rejected Requests</a>				
+				<a href="admin_resolve.html" class="button">Resolved Requests</a>
 				<br><br>
-				<h2><pre class="tab"><input type="checkbox"> RequestId: B001		Request: Desk repair			Date: 01/06/2018<br><input type="checkbox"> RequestId: A019		Request: Bult replacement		Date: 01/06/2018<br><input type="checkbox"> RequestId: A020		Request: System Unit maintenance	Date: 12/08/2018<br><input type="checkbox"> RequestId: D002		Request: Telephone repair		Date: 02/09/2018<br><input type="checkbox"> RequestId: F015		Request: Tractor maintenance		Date: 17/09/2018<br><input type="checkbox"> RequestId: F015		Request: Tractor maintenance		Date: 17/09/2018<br>
-				</pre></h2>
-				<div id="req_button">
-				<a href="admin_resolve.html" class="button">Resolve</a>
-				<a href="admin_reject.html" class="button">Reject</a>
+				<div id="admin_view">
+					<table border="1px solid black">
+						<thead>
+							<th>Request_id</th>
+							<th>Request</th>
+							<th>Department</th>
+							<th>Status</th>
+							<th>Personal_id</th>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
 				</div>
 			</section>
 		</div>
