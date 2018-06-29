@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="user_homepage.css">
 		<script src="login.js"></script>
 		<script src="logout.js"></script>
+		<script src="side_bar.js"></script>
 	</head>
 	<body>
 	<div id = "big_wrapper" background="https://pixabay.com/en/texture-cement-white-3416848/">
@@ -21,19 +22,19 @@
 			</ul>
 		</nav>
 		<div id = "new_div">
-			<aside id = "left_side">
-				<ul style="list-style-type: none">
-				<h4><li><a href ="admin_homepage.html"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"><i class="fas fa-bars" id='box1'></i></a></li></h4>
-				<br>
-				<h2><li><a href="make_req.html">Make request</a></li></h2>
-				<br>
-				<h2><li><a href="view_req.html">View request</a></li></h2>
-				<br>
-				<h2><li><a href="feedback.html">Feedback</a></li></h2>
-				<br>
-				<h2><li><a href="javascript:location.reload(true)">Refresh Page</a></li></h2>
-				</ul>
-			</aside>
+			<div id="Sidenav" class="sidebar">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				  <a href="make_req.html">Make Request</a>
+				  <a href="view_req.html">View Requests</a>
+				  <a href="feedback.html">Feedback</a>
+				<a href="javascript:location.reload(true)">Refresh Page</a>					
+			</div>
+			<br>
+			<span onclick="openNav()">
+				<div id="line"></div>
+				<div id="line"></div>
+				<div id="line"></div>
+			</span>
 			<section id = "main_section">
 				<form>
 					<input type="text" placeholder="Type Request Id here..." maxlength="50" id="search_bar">

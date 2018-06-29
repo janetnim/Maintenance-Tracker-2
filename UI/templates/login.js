@@ -101,26 +101,10 @@ function makereq(form){
 
 // user search a request function
 function searchreq(form){
-	fetch('https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests/', {
-	  method: "POST",
-	  body: JSON.stringify(toJSON(form)),
-	  headers: {
-	  "Content-Type": "application/json",
-	  "Authorization": "Bearer " + getItems().token
-		}
-	})
-	.then(response => response.json())
-	.catch(error => console.error('Error '+ error))
-	.then(data => {
-		let err = document.getElementById('err-message')
-		err.style.display = "block"
-		err.innerHTML = data.message
-		if(data.message === "request is found"){
-			alert(data.message)
-			req();
-			window.location.href = "search_req.html"
-		}
-	})
+	let request_id = document.getElementById("search_bar").value;
+
+	req(request_id);
+
 	return false;
 }
 
@@ -136,21 +120,15 @@ function req(request_id){
 	.then(response => response.json())
 	.catch(error => console.error('Error '+ error))
 	.then(data => {
-	let requests = data.res;
-
-	let content = "";
-	for(let i = 0; i < requests.length; i++){
-		let request = requests[i];
-		content += "<tr id='request_"+request.request_id+"'>"+
-		"<td>"+request.request_id+"</td><td>"+ request.request+
-		"</td><td>"+request.department+"</td><td>"+request.status+
-		"</td><td>"+request.personal_id+"</td><td><button onclick='modify("+request.request_id+")'>Edit</button>"+
-		"</td><td><button onclick='delreq("+request.request_id+")'>Delete</button></td></tr>";
-	}
+	    let request = data.res;
+        content += "<tr id='request_"+request.request_id+"'>"+
+        "<td>"+request.request_id+"</td><td>"+ request.request+
+        "</td><td>"+request.department+"</td><td>"+request.status+
+        "</td><td>"+request.personal_id+"</td><td><button onclick='modify("+request.request_id+")'>Edit</button>"+
+        "</td><td><button onclick='delreq("+request.request_id+")'>Delete</button></td></tr>";
 
 	document.getElementById("search_req").getElementsByTagName("tbody")[0].innerHTML = content;
 	})
-	return false
 }
 
 // user view all requests
@@ -178,6 +156,16 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests", {
 
 	document.getElementById("requests").getElementsByTagName("tbody")[0].innerHTML = content;
 })
+
+function del_out(){
+	var response=confirm("Are you sure you want to delete this request?");
+	if (response===true){
+		req=delreq("+request.request_id+")
+		alert(req)
+	}else{
+		alert("Request is not deleted");
+	}
+}
 
 // user gets feedback
 fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests", {
@@ -229,13 +217,12 @@ function editRequest(form){
 	})
 	.then(response => response.json())
 	.then(data => {
+		alert("Request has been modifed")
+		window.location.href = "view_req.html"
 		if(data.res.status === "Approve"){
 			alert("Cannot edit approved request")
 			window.location.href = "view_req.html"
-		}else{
-		alert("Request has been modifed")
-		window.location.href = "view_req.html"
-	}
+		}	
 	})
 	return false;
 }
