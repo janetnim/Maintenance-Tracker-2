@@ -36,9 +36,10 @@
 				<div id="line"></div>
 			</span>
 			<section id = "main_section">
-				<form class="search_req-form" id="search_req-form" method="post" enctype="multipart/formdata" onsubmit="return searchreq(this);">	
+				<div id="search_req-form">
 					<input type="text" placeholder="Type Request Id here..." maxlength="50" id="search_bar">
-					<input type="submit" value="Search" id="submit">
+					<button type="submit" value="Search" id="submit" onclick="searchreq()">Search</button>
+				</div>
 				</form>
 				<h1>All requests</h1>
 				<br>
@@ -46,19 +47,17 @@
 					<div style="overflow-x:auto;">
 						<table border="1px solid black">
 							<thead>
-								<th>Request_id</th>
+								<th>Request Id</th>
 								<th>Request</th>
 								<th>Department</th>
 								<th>Status</th>
-								<th>Personal_id</th>
 								<th>Modify</th>
 								<th>Delete</th>
 							</thead>
 							<tbody>
-
 							</tbody>
 						</table>
-				</div>
+					</div>
 				</div>
 			</section>
 		</div>

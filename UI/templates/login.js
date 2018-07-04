@@ -10,10 +10,13 @@ function signup(form){
 	.then(response => response.json())
 	.catch(error => console.error('Error '+ error))
 	.then(data => {
-		let err = document.getElementById('err-message')
-		err.style.display = "block"
-		err.innerHTML = data.message
-		login(form);
+		if(data.message !== "User successfully signed up"){
+			let err = document.getElementById('err-message')
+			err.style.display = "block"
+			err.innerHTML = data.message
+		}else{
+			login(form);
+		}
 	})
 	return false;
 } 
@@ -30,15 +33,18 @@ function login(form){
 	.then(response => response.json())
 	.catch(error => console.error('Error '+ error))
 	.then(data => {
-		let err = document.getElementById('err-message')
-		err.style.display = "block"
-		err.innerHTML = data.message
-		setItems(data.token, data.role.role);
-		if(getItems().role === "user"){
-		window.location.href = "user_homepage.html"
-	}else if(getItems().role === "admin"){
-		window.location.href = "admin_homepage.html"
-	}
+		if(data.message !== "You have logged in successfully"){
+			let err = document.getElementById('err-message')
+			err.style.display = "block"
+			err.innerHTML = data.message
+		}else{
+			setItems(data.token, data.role.role);
+			if(getItems().role === "user"){
+			window.location.href = "user_homepage.html"
+		}else if(getItems().role === "admin"){
+			window.location.href = "admin_homepage.html"
+		}
+		}
 	})
 	return false;
 }
@@ -74,7 +80,6 @@ function getItems(){
 		'role': role
 	}
 }
-
 // user post request function
 function makereq(form){
 	fetch('https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests', {
@@ -100,34 +105,38 @@ function makereq(form){
 }
 
 // user search a request function
-function searchreq(form){
-	let request_id = document.getElementById("search_bar").value;
+function searchreq(){
+	let search = document.getElementById("search_bar");
+	let request_id = search.value;
 
-	req(request_id);
+	let responseMessage;
 
-	return false;
-}
-
-// user gets a single request
-function req(request_id){
 	fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests/"+request_id, {
-	method: "GET",
-	headers: {
-	"Content-Type": "application/json",
-	"Authorization": "Bearer " + getItems().token
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer " + getItems().token
+		}	
+	}).then(response => response.json())
+	.then( data => {
+		let requests = document.getElementById("requests").querySelector("tbody");
+		
+		if( data.message === "Request not found" ){
+			alert("request not found")
+		}else{
+			let request = data.res;
+			requests.innerHTML = 
+			`
+				<tr>
+					<td>${ request.request_id }</td>
+					<td>${ request.request }</td>
+					<td>${ request.department }</td>
+					<td>${ request.status }</td>
+					<td>${ "<button onclick='modify("+request.request_id+")'>Edit</button"  }</td>
+					<td>${ "<button onclick='delreq("+request.request_id+")'>Delete</button"  }</td>	
+				</tr>
+		`
 		}
-	})
-	.then(response => response.json())
-	.catch(error => console.error('Error '+ error))
-	.then(data => {
-	    let request = data.res;
-        content += "<tr id='request_"+request.request_id+"'>"+
-        "<td>"+request.request_id+"</td><td>"+ request.request+
-        "</td><td>"+request.department+"</td><td>"+request.status+
-        "</td><td>"+request.personal_id+"</td><td><button onclick='modify("+request.request_id+")'>Edit</button>"+
-        "</td><td><button onclick='delreq("+request.request_id+")'>Delete</button></td></tr>";
-
-	document.getElementById("search_req").getElementsByTagName("tbody")[0].innerHTML = content;
 	})
 }
 
@@ -137,60 +146,46 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests", {
 	headers: {
 	"Content-Type": "application/json",
 	"Authorization": "Bearer " + getItems().token
-		}
-})
-.then(response => response.json())
-.catch(error => console.error('Error '+ error))
-.then(data => {
-	let requests = data.res;
+		}}).then(response => response.json())
+.then( data => {
+	let requests = document.getElementById("requests").querySelector("tbody");
+	requests.innerHTML = 
+	`
+		${ data.res.map( request => `
+				<tr>
+					<td>${ request.request_id }</td>
+					<td>${ request.request }</td>
+					<td>${ request.department }</td>
+					<td>${ request.status }</td>
+					<td>${ "<button onclick='modify("+request.request_id+")'>Edit</button"  }</td>
+					<td>${ "<button onclick='delout("+request.request_id+")'>Delete</button"  }</td>	
+				</tr>
+			`).join("") }
+	`;
+});
 
-	let content = "";
-	for(let i = 0; i < requests.length; i++){
-		let request = requests[i];
-		content += "<tr id='request_"+request.request_id+"'>"+
-		"<td>"+request.request_id+"</td><td>"+ request.request+
-		"</td><td>"+request.department+"</td><td>"+request.status+
-		"</td><td>"+request.personal_id+"</td><td><button onclick='modify("+request.request_id+")'>Edit</button>"+
-		"</td><td><button onclick='delreq("+request.request_id+")'>Delete</button></td></tr>";
-	}
 
-	document.getElementById("requests").getElementsByTagName("tbody")[0].innerHTML = content;
-})
-
-function del_out(){
-	var response=confirm("Are you sure you want to delete this request?");
-	if (response===true){
-		req=delreq("+request.request_id+")
-		alert(req)
-	}else{
-		alert("Request is not deleted");
-	}
-}
-
-// user gets feedback
+//user can get feedback
 fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests", {
 	method: "GET",
 	headers: {
 	"Content-Type": "application/json",
 	"Authorization": "Bearer " + getItems().token
-		}
-})
-.then(response => response.json())
-.catch(error => console.error('Error '+ error))
-.then(data => {
-	let requests = data.res;
-
-	let content = "";
-	for(let i = 0; i < requests.length; i++){
-		let request = requests[i];
-		content += "<tr id='request_"+request.request_id+"'>"+
-		"<td>"+request.request_id+"</td><td>"+ request.request+
-		"</td><td>"+request.department+"</td><td>"+request.status+
-		"</td><td>"+request.personal_id+"</td></tr>";
-	}
-
-	document.getElementById("feedback").getElementsByTagName("tbody")[0].innerHTML = content;
-})
+		}}).then(response => response.json())
+.then( data => {
+	let requests = document.getElementById("feedback").querySelector("tbody");
+	requests.innerHTML = 
+	`
+		${ data.res.map( request => `
+				<tr>
+					<td>${ request.request_id }</td>
+					<td>${ request.request }</td>
+					<td>${ request.department }</td>
+					<td>${ request.status }</td>	
+				</tr>
+			`).join("") }
+	`;
+});
 
 // user gets a single request for editing
 fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests/"+localStorage.getItem("request_id"), {
@@ -217,12 +212,12 @@ function editRequest(form){
 	})
 	.then(response => response.json())
 	.then(data => {
-		alert("Request has been modifed")
+		if(data.message==="Only a pending request can be modified."){
+			alert("You cannot only edit a pending request")
+		}else{
+		alert("Request has been modifed")	
+	}
 		window.location.href = "view_req.html"
-		if(data.res.status === "Approve"){
-			alert("Cannot edit approved request")
-			window.location.href = "view_req.html"
-		}	
 	})
 	return false;
 }
@@ -250,6 +245,14 @@ function delreq(request_id){
     })
     return false;
 }
+ function delout(request_id){
+ 	var response=confirm("Are you sure you want to delete the request?");
+	if (response==true){
+		delreq(request_id)
+	}else{
+		alert("Welcome back!");
+	}
+ }
 
 // admin endpoints
 
