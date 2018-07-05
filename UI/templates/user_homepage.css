@@ -211,8 +211,8 @@ div.content{
 	text-align: center;
 }
 #image{
-	width: 250px;
-	height: 250px;
+	margin-right: 5px;
+	padding-right: 5px;
 }
 #submit{
 	padding: 3px;
@@ -277,6 +277,11 @@ a.button {
     text-decoration: none;
     color: black;
     border-radius: 5px;
+    font: bold 16px Arial;
+    cursor: pointer;
+}
+#cancel_button:hover, #cancel_button:active{
+	background: #808080;
 }
 #cancel_button:hover{
 	background: grey;
@@ -388,4 +393,12 @@ aside{
 .form button:hover,.form button:active{
 	background: #43A047;
 
+}
+#lol button{
+	background: #d16f2e;
+	background-color: #d16f2e;
+	cursor: pointer;
+}
+#lol:hover, #lol button:active{
+	background-color: #808080;
 }
