@@ -1,54 +1,64 @@
+<!DOCTYPE html>
 <html lang = "en">
 	<head>
 		<meta charset="utf-8"/>
 		<title>Maintenance Department Request Tracker</title>
 		<link rel="stylesheet" href="user_homepage.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 		<script src="logout.js"></script>
+		<script src="login.js"></script>
 		<script src="side_bar.js"></script>
 	</head>
 	<body>
 	<div id = "big_wrapper">
-		<header id = "top_header">
-			<h1>MAINTENANCE TRACKER</h1>
-		</header>
-		<nav id="top_menu">
-			<ul>
-				<li><a href="about.html">About</a></li>
-				<li><a href="admin_homepage.html">Home</a></li>
-				<li><a href="admin_contact.html">Contact</a></li>
-				<li><a href="admin_homepage.html" onclick="logout();">Log out</a></li>
-			</ul>
-		</nav>
 		<div id = "new_div">
-			<div id="Sidenav" class="sidebar">
+			<div id="Sidenav" class="sidebar" tabindex="1">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-				  <a href="admin_profile.html">View Users</a>
-				  <a href="admin_requests.html">Received requests</a>
-				  <a href="admin_view.html">View requests</a>
+				<a href="admin_homepage.html">Dashboard</a>
+				<a href="admin_profile.html">Users</a>
+				<a href="admin_requests.html">Requests</a>
 				<a href="javascript:location.reload(true)">Refresh Page</a>					
 			</div>
 			<br>
-			<span onclick="openNav()">
-				<div id="line"></div>
-				<div id="line"></div>
-				<div id="line"></div>
-			</span>
+			<div onclick="openNav()">
+				<span>
+					<div id="line"></div>
+					<div id="line"></div>
+					<div id="line"></div>
+				</span>
+			</div>
 			<section id = "main_section">
-				<form>
-					<input type="text" placeholder="Type here..." maxlength="50" id="search_bar">
-					<input type="submit" value="Search" id="submit">
-				</form>
-				<br>
-				<div id="image">
-					<img src="gears.jpg" id="index_image">
-				</div><br>
+				<header id = "top_header">
+					<div id="first">
+					<h4>MAINTENANCE TRACKER</h4>
+					</div>
+					<div id="username" onclick="logout();">
+						<i class="far fa-user"></i>
+						<h2 id="err-message">janet nim</h2>
+					</div>
+				</header>	
 				<br><br>
-				<h1>About us</h1>
-				<h2>Lorem Ipsum</h2>
-				<h2>We value you as always</h2><br>
-				<div class="content">Do you like to  play a candy crush? Check out this new fruit crush game <a href="goole.com">https://www.google.com/</a> Or would you rather cube crush<a href="google.com">https://www.google.com/</a> If you love it give us a five star rating and share with your friends Look out for more coming soon!</div>
-				<div class="content">Do you like to  play a candy crush? Check out this new fruit crush game <a href="goole.com">https://www.google.com/</a> Or would you rather cube crush<a href="google.com">https://www.google.com/</a> If you love it give us a five star rating and share with your friends Look out for more coming soon!</div>
-				<div class="content">Do you like to  play a candy crush? Check out this new fruit crush game <a href="goole.com">https://www.google.com/</a> Or would you rather cube crush<a href="google.com">https://www.google.com/</a> If you love it give us a five star rating and share with your friends Look out for more coming soon!</div>
+				<div id="butt_on">
+					<a href="admin_approve.html" id="cancel_button" class="button">Approved Requests</a>
+					<a href="admin_reject.html" id="cancel_button" class="button">Rejected Requests</a>
+					<a href="admin_resolve.html" id="cancel_button" class="button">Resolved Requests</a>
+				</div>
+				<br><br>
+				<div id="admin_view">
+					<div style="overflow-x:auto;">
+						<table border="1px solid black" align="center">
+							<thead>
+								<th>Request_id</th>
+								<th>Request</th>
+								<th>Department</th>
+								<th>Status</th>
+								<th>Personal_id</th>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>	
 			</section>
 		</div>
 		<footer id = "the_footer">

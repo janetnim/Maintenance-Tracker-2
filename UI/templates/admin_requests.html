@@ -10,52 +10,53 @@
 	</head>
 	<body>
 	<div id = "big_wrapper">
-		<header id = "top_header">
-			<h1>MAINTENANCE TRACKER</h1>
-		</header>
-		<nav id="top_menu">
-			<ul>
-				<li><a href="about.html">About</a></li>
-				<li><a href="admin_homepage.html">Home</a></li>
-				<li><a href="admin_contact.html">Contact</a></li>
-				<li><a href="admin_requests.html" onclick="logout();">Log out</a></li>
-			</ul>
-		</nav>
 		<div id = "new_div">
 			<div id="Sidenav" class="sidebar">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-				  <a href="admin_profile.html">View Users</a>
-				  <a href="admin_requests.html">Received requests</a>
-				  <a href="admin_view.html">View requests</a>
+				<a href="admin_homepage.html">Dashboard</a>
+				<a href="admin_profile.html">Users</a>
+				<a href="admin_requests.html">Requests</a>
 				<a href="javascript:location.reload(true)">Refresh Page</a>					
 			</div>
 			<br>
-			<span onclick="openNav()">
-				<div id="line"></div>
-				<div id="line"></div>
-				<div id="line"></div>
-			</span>
+			<div onclick="openNav()">
+				<span>
+					<div id="line"></div>
+					<div id="line"></div>
+					<div id="line"></div>
+				</span>
+			</div>
 			<section id = "main_section">
-				<form>
-					<input type="text" placeholder="Type here..." maxlength="50" id="search_bar">
-					<input type="submit" value="Search" id="submit">
-				</form>	
-				<br><h1>Incoming Requests...</h1><br>
+				<header id = "top_header">
+					<h1>MAINTENANCE TRACKER</h1>
+				</header>
+				<nav id="top_menu">
+					<ul>
+						<li><a href="admin_homepage.html" onclick="logout();">Log out</a></li>
+					</ul>
+				</nav>
+				<br><br>
+				<a href="admin_approve.html" id="cancel_button" class="button">Approved Requests</a>
+				<a href="admin_reject.html" id="cancel_button" class="button">Rejected Requests</a>
+				<a href="admin_resolve.html" id="cancel_button" class="button">Resolved Requests</a>
+				<form class="search_req-form" id="search_req-form">	
+					<input type="text" placeholder="Search here..." maxlength="50" id="search_bar" onkeyup="mod()" title="Search here">
+				</form>
+				<br><br>
 				<div id="admin_requests">
 					<div style="overflow-x:auto;">
-						<table border="1px solid black">
+						<table border="1px solid black" id="lol">
 							<thead>
 								<th>Request_id</th>
 								<th>Request</th>
 								<th>Department</th>
 								<th>Status</th>
 								<th>Personal_id</th>
-								<th id="lol">Approve</th>
+								<th>Approve</th>
 								<th>Disapprove</th>
 								<th>Delete</th>
 							</thead>
 							<tbody>
-
 							</tbody>
 						</table>
 					</div>

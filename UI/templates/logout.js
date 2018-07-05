@@ -3,6 +3,5 @@ function logout(){
 	if (response==true){
 		window.location.href="user_login.html"
 	}else{
-		alert("Welcome back!");
 	}
 }

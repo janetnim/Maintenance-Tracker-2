@@ -188,7 +188,6 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests", {
 		"</td><td>"+request.department+"</td><td>"+request.status+
 		"</td><td>"+request.personal_id+"</td></tr>";
 	}
-
 	document.getElementById("feedback").getElementsByTagName("tbody")[0].innerHTML = content;
 })
 
@@ -233,6 +232,32 @@ function modify(request_id){
 	window.location.href = "request.html"
 }
 
+///trial gain for modifying 
+function mod(){
+	var input, filter, table, tr, td, i;
+	input = document.getElementById("search_bar");
+	filter = input.value.toUpperCase();
+	table = document.getElementById("lol")
+	tr = table.getElementByTagName("tr")
+	console.log(tr);
+
+	for (i = 0; i < tr.length; i++) {
+       td = tr[i].getElementsByTagName("td");
+       let j = 0;
+       for (j = 0; j < td.length; j++) {
+           let tdata = td[j];
+           console.log(tdata);
+           if (tdata) {
+               if (tdata.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                   tr[i].style.display = "";
+                   break;
+               } else {
+                   tr[i].style.display = "none";
+               }
+           }
+       }
+   }
+}
 // user delete request
 function delreq(request_id){
     fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests/"+request_id, {
@@ -262,22 +287,23 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests", {
 	}
 }).then(response => response.json())
 .then(data => {
-	let requests = data.Request;
-
-	let content = "";
-	for(let i = 0; i < requests.length; i++){
-		let request = requests[i];
-		content += "<tr id='request_"+request.request_id+"'>"+
-		"<td>"+request.request_id+"</td><td>"+ request.request+
-		"</td><td>"+request.department+"</td><td>"+request.status+
-		"</td><td>"+request.personal_id+
-		"</td><td><button onclick='approve("+request.request_id+")''>Approve</button></td>"+
-		"</td><td><button onclick='disapprove("+request.request_id+")''>Disapprove</button></td>"+
-		"</td><td><button onclick='admin_delreq("+request.request_id+")'>Delete</button></td></tr>";
-	}
-
-	document.getElementById("admin_requests").getElementsByTagName("tbody")[0].innerHTML = content;
-})
+	let requests = document.getElementById("admin_requests").querySelector("tbody");
+	requests.innerHTML = 
+	`
+		${ data.Request.map( request => `
+				<tr>
+					<td>${ request.request_id }</td>
+					<td>${ request.request }</td>
+					<td>${ request.department }</td>
+					<td>${ request.personal_id }</td>
+					<td>${ request.status }</td>
+					<td>${ "<button onclick='approve("+request.request_id+")'>Approve</button>" }</td>
+					<td>${ "<button onclick='disapprove("+request.request_id+")'>Disapprove</button>" } </td>
+					<td>${ "<button onclick='admin_delreq("+request.request_id+")'>Delete</button>" } </td>
+				</tr>
+			`).join("") }
+	`;
+});
 
 // admin view all unfiltered requests
 fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests", {
@@ -299,7 +325,6 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests", {
 		"</td><td>"+request.personal_id+
 		"</td></tr>";
 	}
-
 	document.getElementById("admin_view").getElementsByTagName("tbody")[0].innerHTML = content;
 })
 
@@ -323,7 +348,6 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests/approve", {
 		"</td><td>"+request.personal_id+
 		"</td><td><button onclick='resolve("+request.request_id+")'>Resolve</button></td></tr>";
 	}
-
 	document.getElementById("admin_approve").getElementsByTagName("tbody")[0].innerHTML = content;
 })
 
@@ -347,7 +371,6 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests/disapprove", 
 		"</td><td>"+request.personal_id+
 		"</td><td><button onclick='approve("+request.request_id+")'>Approve</button></td></tr>";
 	}
-
 	document.getElementById("admin_reject").getElementsByTagName("tbody")[0].innerHTML = content;
 })
 
@@ -371,7 +394,6 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests/resolve", {
 		"</td><td>"+request.personal_id+
 		"</td></tr>";
 	}
-
 	document.getElementById("admin_resolve").getElementsByTagName("tbody")[0].innerHTML = content;
 })
 
@@ -479,6 +501,5 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users", {
 		"</td><td>"+user.email+
 		"</td><td>"+user.role+"</td></tr>";
 	}
-
 	document.getElementById("users").getElementsByTagName("tbody")[0].innerHTML = content;
 })
