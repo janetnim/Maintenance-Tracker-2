@@ -58,6 +58,12 @@ abt_btn.h2{
 #requests{
 	width: 100%;
 }
+#body_text{
+	margin-left: 20px;
+}
+#filter_buttons{
+	margin-left: 130px;
+}
 #text{
 	float: right;
 }
