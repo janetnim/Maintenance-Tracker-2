@@ -4,6 +4,7 @@
 		<meta charset="utf-8"/>
 		<title>Maintenance Department Request Tracker</title>
 		<link rel="stylesheet" href="user_homepage.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 		<script src="logout.js"></script>
 		<script src="login.js"></script>
 		<script src="side_bar.js"></script>
@@ -11,11 +12,10 @@
 	<body>
 	<div id = "big_wrapper">
 		<div id = "new_div">
-			<div id="Sidenav" class="sidebar">
+			<div id="Sidenav" class="sidebar" tabindex="1">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 				<a href="admin_homepage.html">Dashboard</a>
 				<a href="admin_profile.html">Users</a>
-				<a href="admin_requests.html">Requests</a>
 				<a href="javascript:location.reload(true)">Refresh Page</a>					
 			</div>
 			<br>
@@ -28,18 +28,19 @@
 			</div>
 			<section id = "main_section">
 				<header id = "top_header">
-					<h1>MAINTENANCE TRACKER</h1>
+					<div id="first">
+					<h4>MAINTENANCE TRACKER</h4>
+					</div>
+					<div id="username" onclick="logout();">
+						<i class="far fa-user"></i>
+						<h2>log out</h2>
+					</div>
 				</header>
-				<nav id="top_menu">
-					<ul>
-						<li><a href="admin_homepage.html" onclick="logout();">Log out</a></li>
-					</ul>
-				</nav>
-				<br><br>
+				<br>
 				<div id="users">
 					<table border="1px solid black">
 						<thead>
-							<th>Personal_ID</th>
+							<th>User ID</th>
 							<th>User</th>
 							<th>Email</th>
 							<th>Role</th>
