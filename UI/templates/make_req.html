@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Maintenance Department Request Tracker</title>
+		<link rel="stylesheet" href="user_homepage.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+		<script src="logout.js"></script>
+		<script src="login.js"></script>
+		<script src="side_bar.js"></script>
+	</head>
+	<body>
+	<div id = "big_wrapper">
+		<div id = "new_div">
+			<div id="Sidenav" class="sidebar" tabindex="1">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				<a href="user_homepage.html">Dashboard</a>
+				<a href="make_req.html">Make request</a>
+				<a href="user_contact.html">Contact Us</a>
+				<a href="javascript:location.reload(true)">Refresh Page</a>					
+			</div>
+			<br>
+			<div onclick="openNav()">
+				<span>
+					<div id="line"></div>
+					<div id="line"></div>
+					<div id="line"></div>
+				</span>
+			</div>
+			<section id = "main_section">
+				<header id = "top_header">
+					<div id="first">
+					<h4>MAINTENANCE TRACKER</h4>
+					</div>
+					<div id="username" onclick="logout();">
+						<i class="far fa-user"></i>
+						<h2>log out</h2>
+					</div>
+				</header>	
+				<br>
+				<h4>Create a Repair/Maintenance Request</h4><br>
+				<div class="form">
+					<form class="make_req-form" class="make_req-form" method="post" enctype="multipart/formdata" onsubmit="return makereq(this);">
+					<p id="err-message"></p>
+					<br>
+					<label>Request</label>
+					<input type="text" name="request" placeholder="Enter your request"/>
+					<label>Department</label>
+					<input type="text" name="department" placeholder="Enter your department"/>
+					<button class="button" type="button" id="cancel_button" value="Submit">Submit</button>
+					<a href="make_req.html" class="button" id="cancel_button">Cancel</a>
+					</form>
+				</div>
+			</section>
+		</div>
+		<footer id = "the_footer">
+			@copyright2018
+		</footer>
+	</div>
+	</body>
+</html>
