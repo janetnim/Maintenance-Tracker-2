@@ -93,12 +93,13 @@ function makereq(form){
 	.then(response => response.json())
 	.catch(error => console.error('Error '+ error))
 	.then(data => {
-		let err = document.getElementById('err-message')
-		err.style.display = "block"
-		err.innerHTML = data.message
 		if(data.message === "request made successfully"){
 			alert(data.message)
 			window.location.href = "view_req.html"
+		}else{
+			let err = document.getElementById('err-message')
+			err.style.display = "block"
+			err.innerHTML = data.message
 		}
 	})
 	return false;
@@ -164,33 +165,14 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests", {
 	`;
 });
 
-
 //user can get feedback
 fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests", {
 	method: "GET",
 	headers: {
 	"Content-Type": "application/json",
 	"Authorization": "Bearer " + getItems().token
-<<<<<<< HEAD
 		}
-})
-.then(response => response.json())
-.catch(error => console.error('Error '+ error))
-.then(data => {
-	let requests = data.res;
-
-	let content = "";
-	for(let i = 0; i < requests.length; i++){
-		let request = requests[i];
-		content += "<tr id='request_"+request.request_id+"'>"+
-		"<td>"+request.request_id+"</td><td>"+ request.request+
-		"</td><td>"+request.department+"</td><td>"+request.status+
-		"</td><td>"+request.personal_id+"</td></tr>";
-	}
-	document.getElementById("feedback").getElementsByTagName("tbody")[0].innerHTML = content;
-})
-=======
-		}}).then(response => response.json())
+	}).then(response => response.json())
 .then( data => {
 	let requests = document.getElementById("feedback").querySelector("tbody");
 	requests.innerHTML = 
@@ -205,7 +187,6 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests", {
 			`).join("") }
 	`;
 });
->>>>>>> 697bf92fbc6e576e43fc33374b66988e371187b8
 
 // user gets a single request for editing
 fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests/"+localStorage.getItem("request_id"), {
@@ -248,7 +229,7 @@ function modify(request_id){
 	window.location.href = "request.html"
 }
 
-///trial gain for modifying 
+///trial gain for searching 
 function mod(){
 	var input, filter, table, tr, td, i;
 	input = document.getElementById("search_bar");
@@ -274,6 +255,7 @@ function mod(){
        }
    }
 }
+
 // user delete request
 function delreq(request_id){
     fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests/"+request_id, {
@@ -311,6 +293,30 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests", {
 	}
 }).then(response => response.json())
 .then(data => {
+	let requests = document.getElementById("admin_view").querySelector("tbody");
+	requests.innerHTML = 
+	`
+		${ data.Request.map( request => `
+				<tr>
+					<td>${ request.request_id }</td>
+					<td>${ request.request }</td>
+					<td>${ request.department }</td>
+					<td>${ request.personal_id }</td>
+					<td>${ request.status }</td>
+				</tr>
+			`).join("") }
+	`;
+});
+
+// admin dashboard requests
+fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests", {
+	method: "GET",
+	headers: {
+		"Content-Type": "application/json",
+		"Authorization": "Bearer " + getItems().token
+	}
+}).then(response => response.json())
+.then(data => {
 	let requests = document.getElementById("admin_requests").querySelector("tbody");
 	requests.innerHTML = 
 	`
@@ -329,28 +335,43 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests", {
 	`;
 });
 
-// admin view all unfiltered requests
-fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests", {
-	method: "GET",
-	headers: {
-		"Content-Type": "application/json",
-		"Authorization": "Bearer " + getItems().token
-	}
-}).then(response => response.json())
-.then(data => {
-	let requests = data.Request;
+// admin search a request function
+function admin_search_req(){
+	let search = document.getElementById("search_bar");
+	let request_id = search.value;
 
-	let content = "";
-	for(let i = 0; i < requests.length; i++){
-		let request = requests[i];
-		content += "<tr id='request_"+request.request_id+"'>"+
-		"<td>"+request.request_id+"</td><td>"+ request.request+
-		"</td><td>"+request.department+"</td><td>"+request.status+
-		"</td><td>"+request.personal_id+
-		"</td></tr>";
-	}
-	document.getElementById("admin_view").getElementsByTagName("tbody")[0].innerHTML = content;
-})
+	let responseMessage;
+
+	fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests/"+request_id, {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer " + getItems().token
+		}	
+	}).then(response => response.json())
+	.then( data => {
+		let requests = document.getElementById("admin_requests").querySelector("tbody");
+		
+		if( data.message === "Request does not exist" ){
+			alert("Request not found")
+		}else{
+			let request = data.Request;
+			requests.innerHTML = 
+			`
+				<tr>
+					<td>${ request.request_id }</td>
+					<td>${ request.request }</td>
+					<td>${ request.department }</td>
+					<td>${ request.personal_id }</td>
+					<td>${ request.status }</td>
+					<td>${ "<button onclick='approve("+request.request_id+")'>Approve</button>" }</td>
+					<td>${ "<button onclick='disapprove("+request.request_id+")'>Disapprove</button>" } </td>
+					<td>${ "<button onclick='admin_delreq("+request.request_id+")'>Delete</button>" } </td>
+				</tr>
+		`
+		}
+	})
+}
 
 // admin view filtered approved requests
 fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/requests/approve", {
@@ -438,8 +459,9 @@ function approve(request_id){
 		"</td><td>"+request.product_name+"</td><td>"+request.status+
 		"</td><td><button onclick='approve("+request.request_id+")''>Approve</button></td>";
 
+		alert('Request approved')
+		window.location.href = "admin_homepage.html"
 		row.innerHTML = content;
-		window.location.href = "admin_requests.html"
 	});
 }
 
@@ -460,8 +482,9 @@ function disapprove(request_id){
 		"</td><td>"+request.product_name+"</td><td>"+request.status+
 		"</td><td><button onclick='disapprove("+request.request_id+")''>Disapprove</button></td>";
 
+		alert("Request disapproved")
+		window.location.href = "admin_homepage.html"
 		row.innerHTML = content;
-		window.location.href = "admin_requests.html"
 	});
 }
 
@@ -482,8 +505,9 @@ function resolve(request_id){
 		"</td><td>"+request.product_name+"</td><td>"+request.status+
 		"</td><td><button onclick='resolve("+request.request_id+")''>Resolve</button></td>";
 
-		row.innerHTML = content;
+		alert("Request resolved")
 		window.location.href = "admin_approve.html"
+		row.innerHTML = content;
 	});
 }
 
@@ -498,9 +522,10 @@ function admin_delreq(request_id){
     })
     .then(response => response.json())
     .then(data => {
+    	window.location.href = "admin_homepage.html"
        	let row = document.getElementById("request_"+request_id);
 		row.parentNode.removeChild(row);
-		alert("Request deleted")
+		alert("Request successfully deleted")
     })
     return false;
 }

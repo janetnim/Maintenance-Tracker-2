@@ -35,23 +35,24 @@
 						<li><a href="admin_homepage.html" onclick="logout();">Log out</a></li>
 					</ul>
 				</nav>
-				<br><br>
-				<a href="admin_approve.html" id="cancel_button" class="button">Approved Requests</a>
-				<a href="admin_reject.html" id="cancel_button" class="button">Rejected Requests</a>
-				<a href="admin_resolve.html" id="cancel_button" class="button">Resolved Requests</a>
-				<form class="search_req-form" id="search_req-form">	
-					<input type="text" placeholder="Search here..." maxlength="50" id="search_bar" onkeyup="mod()" title="Search here">
-				</form>
+				<br>
+				<div id="search_req-form">
+					<input type="text" placeholder="Type Request Id here..." maxlength="50" id="search_bar">
+					<button type="submit" value="Search" id="submit" onclick="admin_search_req()">Search</button>
+				</div>
 				<br><br>
 				<div id="admin_requests">
 					<div style="overflow-x:auto;">
-						<table border="1px solid black" id="lol">
+						<table border="1px solid black" align="center">
 							<thead>
-								<th>Request_id</th>
+								<th>Request id</th>
 								<th>Request</th>
 								<th>Department</th>
 								<th>Status</th>
-								<th>Personal_id</th>
+								<th>User id</th>
+								<th>Approve</th>
+								<th>Disapprove</th>
+								<th>Delete</th>
 							</thead>
 							<tbody>
 							</tbody>

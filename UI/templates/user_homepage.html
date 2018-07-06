@@ -1,79 +1,64 @@
 <!DOCTYPE html>
 <html lang = "en">
 	<head>
-		<meta charset="utf-8" name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+		<meta charset="utf-8"/>
 		<title>Maintenance Department Request Tracker</title>
 		<link rel="stylesheet" href="user_homepage.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 		<script src="logout.js"></script>
 		<script src="login.js"></script>
 		<script src="side_bar.js"></script>
 	</head>
 	<body>
 	<div id = "big_wrapper">
-		<div id = "top_header">
-			<h1>MAINTENANCE TRACKER</h1>
-		</div>
-		<nav id="top_menu">
-			<ul>
-				<li><a href="about.html">About</a></li>
-				<li><a href="user_homepage.html">Home</a></li>
-				<li><a href="user_contact.html">Contact</a></li>
-				<li ><a href="user_homepage.html" onclick="logout();">Log out</a></li>
-			</ul>
-		</nav>
 		<div id = "new_div">
-			<div id="Sidenav" class="sidebar">
+			<div id="Sidenav" class="sidebar" tabindex="1">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-				  <a href="make_req.html">Make Request</a>
-				  <a href="view_req.html">View Requests</a>
-				  <a href="feedback.html">Feedback</a>
+				<a href="user_homepage.html">Dashboard</a>
+				<a href="make_req.html">Make request</a>
+				<a href="user_contact.html">Contact Us</a>
 				<a href="javascript:location.reload(true)">Refresh Page</a>					
 			</div>
 			<br>
-			<span onclick="openNav()">
-				<div id="line"></div>
-				<div id="line"></div>
-				<div id="line"></div>
-			</span>
+			<div onclick="openNav()">
+				<span>
+					<div id="line"></div>
+					<div id="line"></div>
+					<div id="line"></div>
+				</span>
+			</div>
 			<section id = "main_section">
-				<form>
-					<input type="text" placeholder="Type here..." maxlength="50" id="search_bar">
-					<input type="submit" value="Search" id="submit">
-				</form>
+				<header id = "top_header">
+					<div id="first">
+					<h4>MAINTENANCE TRACKER</h4>
+					</div>
+					<div id="username" onclick="logout();">
+						<i class="far fa-user"></i>
+						<h2>log out</h2>
+					</div>
+				</header>	
 				<br>
-				<button onclick="account();">lol</button>
-				<div id="hom_text">
-					<br>
-					<img src="gears.jpg" id="index_image" id="image" align="left" width="240" height="240">
-					<h2>&nbsp Making requests has been made easier via corps inc maintenance tracker application</h2>
-					<h2>&nbsp You simply log in to your account using your username and password and can access</h2>
-					<h2>&nbsp a variety of options such as making a request to the maintenance department and, </h2>
-					<h2>&nbsp viewing all your previous requests as well as one request and eventually get the</h2>
-					<h2>&nbsp feedback on the status of your requests. You can as well modify your request provided</h2>
-					<h2>&nbsp the status of that request is still pending.</h2><br>
-					<h2>&nbsp Making requests has been made easier via corps inc maintenance tracker application</h2>
-					<h2>&nbsp You simply log in to your account using your username and password and can access</h2>
-					<h2>&nbsp a variety of options such as making a request to the maintenance department and, </h2>
-					<h2>&nbsp viewing all your previous requests as well as one request and eventually get the right</h2>
-					<h2>feedback on the status of your requests.You can modify your request provided
-					the status of that request is still pending.</h2>
-					<h2>Making requests has been made easier via corps inc maintenance tracker application
-					ou simply log in to your account</h2>
-					<h2>Making requests has been made easier via corps inc maintenance tracker application
-					ou simply log in to your account</h2>
-					<h2>Making requests has been made easier via corps inc maintenance tracker application
-					ou simply log in to your account</h2>
-					<h2>Making requests has been made easier via corps inc maintenance tracker application
-					ou simply log in to your account</h2>
+				<div id="search_req-form">
+						<input type="text" placeholder="Type Request Id here..." maxlength="50" id="search_bar">
+						<button type="submit" value="Search" id="submit" onclick="searchreq()">Search</button>
 				</div>
-				<br>
-				<h2>You should get Started right now!</h2>
-				<div class="content">Do you like to  play a candy crush? Check out this new fruit crush game <a href="goole.com">https://www.google.com/</a> Or would you rather cube crush<a href="google.com">https://www.google.com/</a> If you love it give us a five star rating and share with your friends
-				More coming soon!</div>
-				<div class="content">Do you like to  play a candy crush? Check out this new fruit crush game <a href="goole.com">https://www.google.com/</a> Or would you rather cube crush<a href="google.com">https://www.google.com/</a> If you love it give us a five star rating and share with your friends
-				More coming soon!</div>
-				<div class="content">Do you like to  play a candy crush? Check out this new fruit crush game <a href="goole.com">https://www.google.com/</a> Or would you rather cube crush<a href="google.com">https://www.google.com/</a> If you love it give us a five star rating and share with your friends
-				More coming soon!</div>
+				<br><br>
+				<div id="requests">
+					<div style="overflow-x:auto;">
+						<table border="1px solid black" align="center">
+							<thead>
+								<th>Request id</th>
+								<th>Request</th>
+								<th>Department</th>
+								<th>Status</th>
+								<th>Modify</th>
+								<th>Delete</th>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>	
 			</section>
 		</div>
 		<footer id = "the_footer">

@@ -197,10 +197,13 @@ li a:hover{
 }
 #search_bar{
 	width: 300px;
-	padding: 3px;
+	padding: 2px;
 	margin-left: 550px;
 	padding-bottom: 7px;
 	border: 1px solid #d16f2e;
+}
+#search_req-form{
+	text-align: right;
 }
 div.content{
 	width: 200px;
@@ -285,6 +288,30 @@ a.button {
 }
 #cancel_button:hover{
 	background: grey;
+}
+#filter_button{
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 5px;
+	float: left;
+	background-color: #d16f2e;
+	-webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+    font: bold 16px Arial;
+    cursor: pointer;
+}
+#filter_button:hover, #cancel_button:active{
+	background: #808080;
+}
+#filter_button:hover{
+	background: grey;
+}
+#butt_on{
+	display: inline-block;
 }
 #back_button{
 	margin-left: 10px;
