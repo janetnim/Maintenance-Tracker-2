@@ -24,7 +24,8 @@ In this challenge we are required to implement the functionality of the user int
 First navigate to your desired directory and clone the repo
 '''
 git clone https://github.com/janetnim/Maintenance-Tracker-2.git
-'''
+
+'''s
 Then navigate to index.html in the cloned repository and open with your browser
 
 ## Features required are:
