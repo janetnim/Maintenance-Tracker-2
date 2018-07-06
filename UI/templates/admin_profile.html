@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Maintenance Department Request Tracker</title>
+		<link rel="stylesheet" href="user_homepage.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+		<script src="logout.js"></script>
+		<script src="login.js"></script>
+		<script src="side_bar.js"></script>
+	</head>
+	<body>
+	<div id = "big_wrapper">
+		<div id = "new_div">
+			<div id="Sidenav" class="sidebar" tabindex="1">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				<a href="admin_homepage.html">Dashboard</a>
+				<a href="admin_profile.html">Users</a>
+				<a href="javascript:location.reload(true)">Refresh Page</a>					
+			</div>
+			<br>
+			<div onclick="openNav()">
+				<span>
+					<div id="line"></div>
+					<div id="line"></div>
+					<div id="line"></div>
+				</span>
+			</div>
+			<section id = "main_section">
+				<header id = "top_header">
+					<div id="first">
+					<h4>MAINTENANCE TRACKER</h4>
+					</div>
+					<div id="username" onclick="logout();">
+						<i class="far fa-user"></i>
+						<h2>log out</h2>
+					</div>
+				</header>
+				<br>
+				<div id="users">
+					<table border="1px solid black">
+						<thead>
+							<th>User ID</th>
+							<th>User</th>
+							<th>Email</th>
+							<th>Role</th>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+				</div>
+		</section>
+		</div>
+		<footer id = "the_footer">
+			@copyright2018
+		</footer>
+	</div>
+	</body>
+</html>
