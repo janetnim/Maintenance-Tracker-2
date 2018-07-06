@@ -16,7 +16,6 @@
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 				<a href="admin_homepage.html">Dashboard</a>
 				<a href="admin_profile.html">Users</a>
-				<a href="admin_requests.html">Requests</a>
 				<a href="javascript:location.reload(true)">Refresh Page</a>					
 			</div>
 			<br>
@@ -34,25 +33,32 @@
 					</div>
 					<div id="username" onclick="logout();">
 						<i class="far fa-user"></i>
-						<h2 id="err-message">janet nim</h2>
+						<h2>log out</h2>
 					</div>
 				</header>	
-				<br><br>
+				<br>
+				<div id="search_req-form">
+						<input type="text" placeholder="Type Request Id here..." maxlength="50" id="search_bar">
+						<button type="submit" value="Search" id="submit" onclick="admin_search_req()">Search</button>
+				</div>
 				<div id="butt_on">
-					<a href="admin_approve.html" id="cancel_button" class="button">Approved Requests</a>
-					<a href="admin_reject.html" id="cancel_button" class="button">Rejected Requests</a>
-					<a href="admin_resolve.html" id="cancel_button" class="button">Resolved Requests</a>
+					<a href="admin_approve.html" id="filter_button" class="button">Approved Requests</a>
+					<a href="admin_reject.html" id="filter_button" class="button">Rejected Requests</a>
+					<a href="admin_resolve.html" id="filter_button" class="button">Resolved Requests</a>
 				</div>
 				<br><br>
-				<div id="admin_view">
+				<div id="admin_requests">
 					<div style="overflow-x:auto;">
 						<table border="1px solid black" align="center">
 							<thead>
-								<th>Request_id</th>
+								<th>Request id</th>
 								<th>Request</th>
 								<th>Department</th>
 								<th>Status</th>
-								<th>Personal_id</th>
+								<th>User id</th>
+								<th>Approve</th>
+								<th>Disapprove</th>
+								<th>Delete</th>
 							</thead>
 							<tbody>
 							</tbody>
