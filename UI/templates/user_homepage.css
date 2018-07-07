@@ -44,11 +44,6 @@ tr:nth-child(even) {
 	background-color: #4D5656;
 	color: white;
 }
-#index_image{
-	border-radius: 8px;
-	max-width: 100%;
-    height: auto;
-}
 #abt_btn{
 	float: right;
 }
@@ -169,10 +164,6 @@ li a:hover{
 .sidebar a:active{
 	background: grey;
 }
-.sidebar a[tabindex]:focus{
-	color: blue;
-	outline: none;
-}
 .sidebar a:hover {
     background-color: grey;
     color: #454545;
@@ -183,6 +174,10 @@ li a:hover{
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+.active, .lnk:hover{
+	background-color: grey;
+	color: #454545;
 }
 #line{
     width: 30px;
