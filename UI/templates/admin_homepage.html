@@ -39,7 +39,7 @@
 				<br>
 				<div id="search_req-form">
 						<input type="text" placeholder="Type Request Id here..." maxlength="50" id="search_bar">
-						<button type="submit" value="Search" id="submit" onclick="admin_search_req()">Search</button>
+						<button type="submit" value="Search" id="submit" onsubmit="filterRow()">Search</button>
 				</div>
 				<br>
 				<div id="filter_buttons">
@@ -50,7 +50,7 @@
 				<br><br>
 				<div id="admin_requests">
 					<div style="overflow-x:auto;">
-						<table border="1px solid black" align="center">
+						<table border="1px solid black" align="center" id="tab">
 							<thead>
 								<th>Request id</th>
 								<th>Request</th>

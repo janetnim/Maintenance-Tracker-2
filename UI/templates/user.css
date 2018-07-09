@@ -46,6 +46,17 @@ h1{
 }
 .button{
 	background-color: #d16f2e;
+	text-decoration-line: none;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 5px;
+}
+.company-home{
+	width: auto;
+}
+#index{
+	display: -webkit-box;
+	-webkit-box-flex: 1;
 }
 .form button{
 	text-transform: uppercase;
@@ -82,3 +93,36 @@ h1{
     text-decoration: none;
     color: black;
 }
+.page__wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 90%;
+	padding: 0 20px;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

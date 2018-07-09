@@ -229,31 +229,27 @@ function modify(request_id){
 	window.location.href = "request.html"
 }
 
-///trial gain for searching 
-function mod(){
-	var input, filter, table, tr, td, i;
-	input = document.getElementById("search_bar");
-	filter = input.value.toUpperCase();
-	table = document.getElementById("lol")
-	tr = table.getElementByTagName("tr")
-	console.log(tr);
+///text searching 
+var input, filter, table;
+input = document.getElementById("search_bar");
+filter = input.value.toUpperCase();
+table = document.getElementById("tab")
+let rows = table.getElementsByTagName("tr"); // get elements by tag name.
 
-	for (i = 0; i < tr.length; i++) {
-       td = tr[i].getElementsByTagName("td");
-       let j = 0;
-       for (j = 0; j < td.length; j++) {
-           let tdata = td[j];
-           console.log(tdata);
-           if (tdata) {
-               if (tdata.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                   tr[i].style.display = "";
-                   break;
-               } else {
-                   tr[i].style.display = "none";
-               }
-           }
-       }
-   }
+rows.map( tr => filterRow(tr, filter)); // map each of the tr's to the filterRow function.
+
+
+// create a function to help in filtering 
+function filterRow(tr, text){
+    let columns = tr.getElementsByTagName("td");
+    let textFound = false; // to check if the text was found in any of the columns
+    columns.map( td => {
+        if(td.innerHTML.toUpperCase().indexOf(text) >= 0){
+          textFound = true; // the text was found
+        }
+    });
+
+    tr.style.display = textFound ? "" : "none"; // hide the row if the text was not found
 }
 
 // user delete request
