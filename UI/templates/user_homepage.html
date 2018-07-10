@@ -8,6 +8,7 @@
 		<script src="logout.js"></script>
 		<script src="login.js"></script>
 		<script src="side_bar.js"></script>
+		<script src="user.js"></script>
 	</head>
 	<body>
 	<div id = "big_wrapper">
@@ -34,18 +35,17 @@
 					</div>
 					<div id="username" onclick="logout();">
 						<i class="far fa-user"></i>
-						<h2>log out</h2>
+						<div id="user"></div>
 					</div>
 				</header>	
 				<br>
 				<div id="search_req-form">
-						<input type="text" placeholder="Type Request Id here..." maxlength="50" id="search_bar">
-						<button type="submit" value="Search" id="submit" onclick="searchreq()">Search</button>
+					<input type="text" placeholder="Search..." maxlength="50" oninput="filterRequests(this)">
 				</div>
 				<br><br>
 				<div id="requests">
 					<div style="overflow-x:auto;">
-						<table border="1px solid black" align="center">
+						<table border="1px solid black" align="center" id="tab">
 							<thead>
 								<th>Request id</th>
 								<th>Request</th>
