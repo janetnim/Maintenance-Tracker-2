@@ -38,12 +38,12 @@ function login(form){
 			err.style.display = "block"
 			err.innerHTML = data.message
 		}else{
-			setItems(data.token, data.role.role);
+			setItems(data.token, data.role.role, data.username.username);
 			if(getItems().role === "user"){
-			window.location.href = "user_homepage.html"
-		}else if(getItems().role === "admin"){
-			window.location.href = "admin_homepage.html"
-		}
+				window.location.href = "user_homepage.html"
+			}else if(getItems().role === "admin"){
+				window.location.href = "admin_homepage.html"
+			}
 		}
 	})
 	return false;
@@ -67,17 +67,20 @@ function response(){
 	return response
 }
 
-function setItems(token, role){	
+function setItems(token, role, username){	
 	localStorage.setItem('token', token);
 	localStorage.setItem('role', role);
+	localStorage.setItem('username', username);	
 }
 
 function getItems(){
 	let token = localStorage.getItem('token')
 	let role = localStorage.getItem('role')
+	let username = localStorage.getItem('username')
 	return {
 		'token': token,
-		'role': role
+		'role': role,
+		'username': username
 	}
 }
 // user post request function
@@ -152,7 +155,9 @@ fetch("https://maintenance-tracker-2.herokuapp.com/api/v2/users/requests", {
 	let requests = document.getElementById("requests").querySelector("tbody");
 	requests.innerHTML = 
 	`
-		${ data.res.map( request => `
+		${ data.message === "No requests available"?`
+			<h2 id="no_requests">No requests to display</h2>`:
+			data.res.map( request => `
 				<tr>
 					<td>${ request.request_id }</td>
 					<td>${ request.request }</td>
@@ -229,26 +234,30 @@ function modify(request_id){
 	window.location.href = "request.html"
 }
 
-///text searching 
-var input, filter, table;
-input = document.getElementById("search_bar");
-filter = input.value.toUpperCase();
-table = document.getElementById("tab")
-let rows = table.getElementsByTagName("tr"); // get elements by tag name.
+//filter requests
+function filterRequests(input){
+	var filter, table, i;
+	 // map each of the tr's to the filterRow function.
+	filter = input.value.toUpperCase();
+	table = document.getElementById("tab")
+	let rows = table.getElementsByTagName("tr"); 
 
-rows.map( tr => filterRow(tr, filter)); // map each of the tr's to the filterRow function.
-
+	// get elements by tag name
+	for(i=0; i<rows.length; i++){
+		filterRow(rows[i], filter);
+	}
+}
 
 // create a function to help in filtering 
 function filterRow(tr, text){
     let columns = tr.getElementsByTagName("td");
     let textFound = false; // to check if the text was found in any of the columns
-    columns.map( td => {
-        if(td.innerHTML.toUpperCase().indexOf(text) >= 0){
+
+    for(var i=0; i<columns.length; i++){
+    	if(columns[i].innerHTML.toUpperCase().indexOf(text) >= 0){
           textFound = true; // the text was found
         }
-    });
-
+    }
     tr.style.display = textFound ? "" : "none"; // hide the row if the text was not found
 }
 
