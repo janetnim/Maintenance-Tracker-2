@@ -101,6 +101,16 @@ h1{
 	padding: 0 20px;
 	text-align: center;
 }
+#start_button:hover{
+	background-color: grey;
+	color: white;
+}
+#start_button{
+	color: black;
+	border-radius: 5px;
+	font: 20px Arial bold;
+	padding: 10px;
+}
 
 
 
