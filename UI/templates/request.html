@@ -1,45 +1,44 @@
 <!DOCTYPE html>
 <html lang = "en">
 	<head>
-		<meta charset="utf-8"  />
+		<meta charset="utf-8"/>
 		<title>Maintenance Department Request Tracker</title>
-		<link rel="stylesheet" href="user_homepage.css">
-		<script src="logout.js"></script>
-		<script type="text/javascript" src="main.js"></script>
-		<script type="text/javascript" src="side_bar.js"></script>
+		<link rel="stylesheet" href="../static/user_homepage.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+		<script src="../static/logout.js"></script>
+		<script src="../static/main.js"></script>
+		<script src="../static/side_bar.js"></script>
+		<script src="../static/user.js"></script>
 	</head>
 	<body>
 	<div id = "big_wrapper">
-		<header id = "top_header">
-			<h1>MAINTENANCE TRACKER</h1>
-		</header>
-		<nav id = "top_menu">
-			<ul>
-				<li><a href="about.html">About</a></li>
-				<li><a href="user_homepage.html">Home</a></li>
-				<li><a href="user_contact.html">Contact</a></li>
-				<li><a href="view_req.html" onclick="logout();">Log out</a></li>
-			</ul>
-		</nav>
 		<div id = "new_div">
-			<div id="Sidenav" class="sidebar">
+			<div id="Sidenav" class="sidebar" tabindex="1">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-				  <a href="make_req.html">Make Request</a>
-				  <a href="view_req.html">View Requests</a>
-				  <a href="feedback.html">Feedback</a>
+				<a href="user_homepage.html" class="lnk active">Dashboard</a>
+				<a href="make_req.html" class="lnk">Make request</a>
+				<a href="user_contact.html" class="lnk">Contact Us</a>
 				<a href="javascript:location.reload(true)">Refresh Page</a>					
 			</div>
 			<br>
-			<span onclick="openNav()">
-				<div id="line"></div>
-				<div id="line"></div>
-				<div id="line"></div>
-			</span>
+			<div onclick="openNav()">
+				<span>
+					<div id="line"></div>
+					<div id="line"></div>
+					<div id="line"></div>
+				</span>
+			</div>
 			<section id = "main_section">
-				<form>
-					<input type="text" placeholder="Type Request_id here..." maxlength="50" id="search_bar">
-					<input type="submit" value="Search" id="submit">
-				</form>
+				<header id = "top_header">
+					<div id="first">
+					<h4>MAINTENANCE TRACKER</h4>
+					</div>
+					<div id="username" onclick="logout();">
+						<i class="far fa-user"></i>
+						<div id="user"></div>
+					</div>
+				</header>	
+				<br><br>
 				<h1>Edit Request</h1>
 				<form enctype="multipart/formdata" method="post" onsubmit="return editRequest(this)">
 					<input type="text" id="request" name="request" />
