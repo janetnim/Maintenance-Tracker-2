@@ -1,9 +1,7 @@
-function show_confirm(){
-	var r=confirm("press button")
-;
-if(r==true){
-window.onpageshow=index.html;
+function logout(){
+	var response=confirm("Are you sure you want to log out?");
+	if (response==true){
+		window.location.href="../templates/user_login.html"
+	}else{
+	}
 }
-else{
-	alert("Are you sure?");
-}}
