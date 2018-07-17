@@ -1,0 +1,137 @@
+body{
+	margin: 0px;
+	padding: 0px;
+	height: 100vh;
+	width: 100%;
+	background-size: cover;
+	background-position: center;
+}
+h1{
+	font-size: 50px;
+}
+.Company-info{
+	text-align: center;
+	top: 2%;
+	left: 0.5%;
+	position: relative;
+	font-style: Verdana;
+}
+.login-page{
+	width: 360px;
+	padding: 0% 0 0;
+	margin: auto;
+}
+#err-message{
+	display: none;
+	color: red;
+}
+.form{
+	position: relative;
+	z-index: 1;
+	background: rgba(0,0,0,0.5);
+	max-width: 360px;
+	margin: 0 auto 100px;
+	padding: 45px;
+	text-align: center;
+}
+.form input{
+	outline: 1;
+	background: #f2f2f2;
+	width: 100%;
+	border: 0;
+	margin: 0 0 15px;
+	padding: 15px;
+	box-sizing: border-box;
+	font-size: 14px;
+}
+.button{
+	background-color: #d16f2e;
+	text-decoration-line: none;
+	margin-right: 10px;
+	padding: 5px;
+}
+.company-home{
+	width: auto;
+}
+#index{
+	display: -webkit-box;
+	-webkit-box-flex: 1;
+}
+.form button{
+	text-transform: uppercase;
+	outline: 0;
+	background: #d16f2e;
+	width: 100%;
+	border: 0;
+	padding: 15px;
+	color: #FFFFFF;
+	font-size: 14px;
+	cursor: pointer;
+}
+.form button:hover,.form button:active{
+	background: #454545;
+}
+.form .message{
+	margin: 15px 0 0;
+	color: aliceblue;
+	font-size: 12px;
+}
+.form .message a{
+	color: #4CAF50;
+	text-decoration: none;
+}
+#about_button{
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 5px;
+	float: left;
+	background-color: #d16f2e;
+	-webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    color: black;
+}
+.page__wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 90%;
+	padding: 0 20px;
+	text-align: center;
+}
+#start_button:hover{
+	background-color: grey;
+	color: white;
+}
+#start_button{
+	color: black;
+	border-radius: 5px;
+	font: 20px Verdana bold;
+	padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
